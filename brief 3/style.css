@@ -1,0 +1,226 @@
+/* Polices */
+@font-face {
+    font-family: 'Soulmaze';
+    src: url('police/made_soulmaze/MADE Soulmaze PERSONAL USE.otf') format('opentype');
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: 'StandRock';
+    src: url('police/stand-rock-font/misc/StandRock PERSONAL USE ONLY!-66c7.woff2') format('woff2'),
+         url('police/stand-rock-font/StandRock PERSONAL USE ONLY!-d65c.woff2') format('woff2');
+    font-weight: normal;
+}
+
+/* Couleur de fond générale */
+body {
+    background-color: #CDDD20; /* Couleur de fond jaune vif */
+    font-family: 'StandRock', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Conteneur principal */
+.container {
+    text-align: center;
+    margin-top: 50px;
+    color: #000;
+    position: relative;
+}
+
+/* Titre principal */
+h1 {
+    font-size: 85px;
+    font-weight: bold;
+    margin: 0;
+    top: 100px;
+    position: relative;
+    font-family: 'Soulmaze', sans-serif;
+    letter-spacing: 5px; /* Ajuste l'espacement entre les lettres */
+    color: #28282D;
+}
+
+/* Sous-titre sous le titre principal */
+.sub-title {
+    font-size: 40px;
+    margin-top: 100px;
+    margin-bottom: 30px;
+    margin-left: 30%;
+    font-family: 'StandRock', sans-serif;
+    color: #28282D;
+}
+
+/* Smiley */
+.smiley {
+    position: absolute;
+    top: -5%;
+    right: 45%;
+    width: 150px;
+    height: 150px;
+}
+
+.rvector {
+    position: absolute;
+    top: 17%;
+    right: 60%;
+}
+
+.pvector {
+    position: absolute;
+    top: 17%;
+    right: 44.5%;
+}
+
+.troisvector {
+    position: absolute;
+    top: 32%;
+    right: 33%;
+}
+
+.avector {
+    position: absolute;
+    top: 32%;
+    right: 47%;
+}
+
+.ponctuation {
+    position: absolute;
+    top: 15%;
+    right: 23%;
+}
+
+/* Textes flottants */
+.floating-text {
+    position: absolute;
+    font-size: 70px;
+    font-family: 'StandRock', sans-serif;
+    color: #28282D;
+    font-weight: bold;
+}
+
+.floating-text.left {
+    top: 0px;
+    left: 200px;
+    transform: rotate(-15deg);
+    font-weight: lighter;
+}
+
+.floating-text.bottom-left {
+    top: 220px;
+    left: 100px;
+    transform: rotate(-3deg);
+    font-weight: lighter;
+}
+
+.floating-text.top-right {
+    top: 50px;
+    right: 50px;
+    transform: rotate(10deg);
+    font-weight: lighter;
+}
+
+/* Conteneur des gobelets */
+.answers-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+    width: 200px;
+    margin: 5% 40% 20px; 
+    position: relative;
+}
+
+/* Style des gobelets */
+.answerPic {
+    position: relative;
+    cursor: pointer; 
+    transition: transform 0.5s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+}
+
+.answerPic img {
+    width: 12vw;
+    height: auto;
+    object-fit: contain;
+    transition: transform 0.5s ease;
+}
+
+/* Résultat initialement masqué */
+.result {
+    display: none;  /* masquer les textes au départ */
+    font-family: 'StandRock', sans-serif;
+    color: white;
+    font-size: 30px;
+    letter-spacing: 3px;
+    margin: 0;
+}
+
+/* Border pour styliser le cercle autour du texte */
+.border {
+    display: none; /* Masquer l'ovale */
+    border: 3px solid;
+    width: 100px; 
+    height: 50px; 
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    border-color: #28282D;
+    background-color: #28282D;
+    margin-top: -10px; 
+}
+
+/* Soulève le gobelet lors du clic */
+.answerPic.lifted img {
+    transform: translateY(-80px); 
+    transition: transform 0.5s ease-in-out; /* Animation  */
+}
+
+/* Afficher l'ovale et le résultat une fois que le gobelet est soulevé */
+.answerPic.lifted .border {
+    display: flex; 
+}
+
+.answerPic.lifted .result {
+    display: block; /* Révéler le texte clic */
+}
+
+/* Animation survol */
+.answerPic:hover img {
+    animation: movehover 0.5s infinite alternate;
+}
+
+@keyframes movehover {
+    from {
+        transform: translateY(0) rotate(0deg);
+    }
+    to {
+        transform: translateY(-5px) rotate(3deg);
+    }
+}
+
+/* Animation démarrage pour gobelets */
+@keyframes move-box1 {
+    0% { left: 0%; }
+    25% { left: 50%; }
+    50% { left: -10%; }
+    75% { left: 30%; }
+    100% { left: 0%; }
+}
+
+@keyframes move-box2 {
+    0% { left: 0%; }
+    25% { left: -30%; }
+    50% { left: 30%; }
+    75% { left: -10%; }
+    100% { left: 0%; }
+}
+
+/* Animer les gobelets au démarrage */
+#answerPicGroup #gobelet1 {
+    animation: move-box1 4s ease-in-out forwards;
+}
+
+#answerPicGroup #gobelet2 {
+    animation: move-box2 4s ease-in-out forwards;
+}
